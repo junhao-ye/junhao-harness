@@ -1,0 +1,21 @@
+{
+  "name": "junhao-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Junhao Harness，基於 DeepSeek Harness 的繁體中文 Web 版",
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "scripts": {
+    "start": "node ./scripts/start.mjs",
+    "update-locale": "node ./scripts/update-locale.mjs"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.2.2-rc.1"
+  },
+  "devDependencies": {
+    "opencc-js": "1.0.5",
+    "typescript": "5.9.3"
+  }
+}

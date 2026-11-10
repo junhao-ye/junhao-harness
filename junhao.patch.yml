@@ -1,0 +1,6 @@
+- id: ui-brand-official
+  disabled: true
+
+- insert:
+    - id: junhao-web
+      name: ./plugin/index.mjs
