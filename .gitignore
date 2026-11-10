@@ -1,0 +1,4 @@
+node_modules/
+.junhao/
+.env
+.env.*
