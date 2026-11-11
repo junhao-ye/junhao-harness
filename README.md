@@ -2,6 +2,8 @@
 
 Junhao Harness 是以 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 為基礎的繁體中文 Web 版。它透過上游的 Cordis 外掛機制載入 `zh-Hant` 詞庫，並在瀏覽器分頁、側邊欄與首頁顯示 Junhao 品牌。
 
+安裝、首次設定、遠端部署與備份步驟見 [Junhao Harness 使用說明書](docs/user-guide.md)。
+
 ## 啟動
 
 在專案目錄中使用 Node.js 24.9 以上版本執行以下命令。
