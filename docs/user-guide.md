@@ -31,10 +31,19 @@ Windows PowerShell 若因執行原則擋住 `npm.ps1`，可把 `npm` 換成 `npm
 
 - 在「設定 → 模型」可儲存 DeepSeek API 金鑰，也可按「新增模型供應商」選擇第三方供應商。使用自訂端點時，填入供應商 ID、基礎網址、API 協定、憑證和至少一個模型。儲存後回到對話的模型選單選取。 [上游模型設定指南](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers)
 - 介面預設使用繁體中文。到「設定 → 一般 → 語言」可以切換語言，重新載入頁面後也會讀回已儲存的偏好。
-- 從側邊欄的「外掛」啟用或設定外掛。安裝第三方外掛時，主機需要能執行 `pnpm`，可在終端機執行 `pnpm --version` 確認。「新增外掛」支援 npm 套件名稱、Git 儲存庫網址或本機資料夾路徑。到「設定 → 內建外掛」可搜尋內建元件並查看執行狀態。 [pnpm 安裝說明](https://pnpm.io/installation)
+- 從側邊欄的「外掛」啟用或設定外掛。透過介面安裝、更新或移除第三方外掛時，主機需要能執行 `pnpm`，可在終端機執行 `pnpm --version` 確認。「新增外掛」支援 npm 套件名稱、Git 儲存庫網址或本機資料夾路徑。到「設定 → 內建外掛」可搜尋內建元件並查看執行狀態。 [pnpm 安裝說明](https://pnpm.io/installation)
 - 在「外掛」啟用「自訂外掛索引」後，開啟「探索外掛」並新增索引來源。安裝前請在確認畫面核對套件、版本和來源。 [上游外掛索引指南](https://deepseek-harness.github.io/deepseek-harness/en/guide/plugin-market)
 
-Junhao Harness 會將外掛提供的中文名稱、摘要及 Markdown 說明轉成台灣繁體。圖片內文字、外掛專屬畫面與僅提供英文的內容由外掛提供者維護。
+Junhao Harness 會將外掛提供的中文名稱、摘要及 Markdown 說明轉成台灣繁體。自行安裝的外掛介面依各外掛支援的語言顯示。圖片內文字與僅提供英文的內容維持原文。
+
+### 使用預裝外掛
+
+- **自媒體工作台**可整理靈感，並使用已設定的模型製作口播稿、標題與分鏡。 [自媒體工作台說明](https://github.com/woniuniuniu/dsh-media-desk)
+- **歸藏設計**提供網頁簡報、社群圖卡、網頁排版與寫作技能。若輸出圖卡時提示缺少 Chromium，在專案目錄執行 `npx playwright install chromium`。 [歸藏設計說明](https://github.com/op7418/dsh-guizang-design/blob/main/README.en.md)
+
+兩個外掛隨 `npm ci` 安裝，首次啟動時會加入 Web 設定檔。先前已自行安裝的版本與啟用狀態會保留，也可到「外掛」停用或移除。預裝版本會在啟動時套用繁體中文介面，歸藏設計也會套用登入檢查，因此首次啟動時需能寫入專案的 `node_modules`。
+
+歸藏設計跟隨 Junhao Harness 的介面語言，會將作品集、內容製作流程、寫作風格檔案及官方範例的目錄顯示為繁體中文。自媒體工作台可在外掛設定選擇「跟隨 Junhao Harness」或指定「繁體中文」。已儲存的使用者內容及範例檔案保留原文。
 
 ## 設定儲存與備份
 

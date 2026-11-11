@@ -2,11 +2,13 @@ import { spawn } from 'node:child_process'
 import { mkdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { preparePreinstalledPlugins } from './preinstalled-plugins.mjs'
 
 const home = resolve(process.env.JUNHAO_HOME || fileURLToPath(new URL('../.junhao/home', import.meta.url)))
 const overlay = fileURLToPath(new URL('../junhao.patch.yml', import.meta.url))
 const cli = fileURLToPath(import.meta.resolve('@deepseek-ai/dsh/lib/bin.js'))
 await mkdir(home, { recursive: true })
+await preparePreinstalledPlugins(home)
 
 const child = spawn(process.execPath, [
   cli, 'web', '--patch', overlay, ...process.argv.slice(2),

@@ -17,9 +17,15 @@ npm start
 
 若要指定連接埠，執行 `npm start -- --port 39081 --no-open`，再開啟終端機印出的完整啟動連結。本版預設把設定、對話與憑證儲存在專案內的 `.junhao/home`，可用 `JUNHAO_HOME` 指定其他目錄。
 
+## 預裝外掛
+
+首次啟動時，Junhao Harness 會在 Web 設定檔中加入自媒體工作台 `dsh-media-desk@2.6.2` 和歸藏設計 `dsh-guizang-design@0.1.4`。可從側邊欄開啟，或到「外掛」管理。 [自媒體工作台](https://github.com/woniuniuniu/dsh-media-desk) · [歸藏設計](https://github.com/op7418/dsh-guizang-design)
+
+兩個預裝外掛的操作介面支援台灣繁體中文。歸藏設計跟隨 Junhao Harness 的介面語言，自媒體工作台也可在外掛設定中選擇語言。
+
 ## 詞庫與上游版本
 
-本版使用 DeepSeek Harness `0.2.2-rc.1`。繁體詞庫採用台灣用詞。外掛管理、內建外掛清單與探索外掛也會以繁體顯示外掛提供的中文名稱、摘要與說明。外掛專屬畫面仍由各外掛提供翻譯。
+本版使用 DeepSeek Harness `0.2.2-rc.1`。繁體詞庫採用台灣用詞。外掛管理、內建外掛清單與探索外掛也會以繁體顯示外掛提供的中文名稱、摘要與說明。自行安裝的外掛介面依各外掛支援的語言顯示。
 
 更新詞庫時，先取得對應版本的 [上游原始碼](https://github.com/deepseek-ai/deepseek-harness/tree/dsh-v0.2.2-rc.1)，再執行 `npm run update-locale -- <上游原始碼目錄>`。產生器使用 OpenCC 轉換字詞，再套用 `plugin/locale-overrides.json` 的人工校訂。
 

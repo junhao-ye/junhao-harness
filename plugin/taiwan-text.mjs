@@ -77,12 +77,13 @@ const terms = [
 export const hasHan = text => /\p{Script=Han}/u.test(text)
 
 // Preserve interpolation tokens, inline code and URLs in UI strings.
-export function createTaiwanTranslator(Converter) {
+export function createTaiwanTranslator(Converter, extraTerms = []) {
   const convert = Converter({ from: 'cn', to: 'twp' })
+  const replacements = [...terms, ...extraTerms]
   return text => text.split(/(\{\w+\}|\x60[^\x60]+\x60|https?:\/\/[^\s<>\x60。，；）)]+)/u).map((part, index) => {
     if (index % 2) return part
     let translated = convert(part)
-    for (const [original, replacement] of terms) translated = translated.replaceAll(original, replacement)
+    for (const [original, replacement] of replacements) translated = translated.replaceAll(original, replacement)
     return translated
   }).join('')
 }
