@@ -9,13 +9,15 @@
   },
   "scripts": {
     "start": "node ./scripts/start.mjs",
+    "test": "node --test test/*.test.mjs",
     "update-locale": "node ./scripts/update-locale.mjs"
   },
   "dependencies": {
-    "@deepseek-ai/dsh": "0.2.2-rc.1"
+    "@deepseek-ai/dsh": "0.2.2-rc.1",
+    "mdast-util-from-markdown": "2.1.0",
+    "opencc-js": "1.0.5"
   },
   "devDependencies": {
-    "opencc-js": "1.0.5",
     "typescript": "5.9.3"
   }
 }

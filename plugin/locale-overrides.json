@@ -9,7 +9,40 @@
     "placeholder.hero": "描述你想完成的工作，輸入 / 使用指令，或輸入 @ 引用檔案與對話"
   },
   "sidebar": {
-    "session.new.label": "新增會話"
+    "session.new.label": "新增對話"
+  },
+  "pluginManager": {
+    "intro": "安裝、啟用及設定外掛",
+    "installExistingDescription": "支援 npm 套件、Git 儲存庫及本機資料夾",
+    "installDescription": "輸入外掛的套件名稱、GitHub 儲存庫網址或本機資料夾路徑。",
+    "installSpecLabel": "套件名稱或網址",
+    "installProblemInvalid": "無法辨識這個套件名稱或網址：{reason}",
+    "registryLegend": "選擇下載外掛的 npm 來源",
+    "registryOfficial": "npm 官方來源",
+    "registryCustom": "自訂網址",
+    "registryCustomHint": "輸入以 http:// 或 https:// 開頭的內部或私人 npm 來源網址。若需要登入，請將憑證放在本機的 ~/.npmrc。",
+    "registryCustomInvalid": "請輸入以 http:// 或 https:// 開頭的網址",
+    "metadataError": "無法讀取套件中繼資料：{error}",
+    "partsFilterEmpty": "沒有符合條件的元件。",
+    "rowPhaseUnloading": "卸載中",
+    "statusMissingFiles": "找不到套件檔案"
+  },
+  "pluginMarket": {
+    "title": "探索外掛",
+    "sourcesDescription": "新增外掛索引的網址，即可在「探索外掛」瀏覽其中的外掛。",
+    "sourceInvalid": "請輸入以 http:// 或 https:// 開頭的網址，並移除使用者名稱、密碼及 # 片段。",
+    "sortRelevance": "關聯性",
+    "switchToAscending": "改為遞增排序",
+    "switchToDescending": "改為遞減排序",
+    "backToList": "探索外掛",
+    "factRegistry": "套件來源",
+    "factHomepage": "首頁"
+  },
+  "settings.pluginInventory": {
+    "emptySearch": "沒有符合條件的外掛。"
+  },
+  "settings.plugins": {
+    "intro": "檢視內建外掛及其執行狀態"
   },
   "settings": {
     "general.nav": "一般"
