@@ -14,7 +14,7 @@ window.__ModuleLoader__.load({
       return createElement('span', { style: { fontWeight: 650, whiteSpace: 'nowrap' } }, 'Junhao Harness')
     }
 
-    function apply(ctx) {
+    async function apply(ctx) {
       // The published Web bundle sets its build title when the layout mounts.
       // Replace that suffix while retaining the selected session title.
       ctx.effect(() => {
@@ -32,8 +32,6 @@ window.__ModuleLoader__.load({
       for (const [namespace, entries] of Object.entries(globalThis.__JUNHAO_DICTIONARIES__)) {
         ctx.effect(() => ctx.locale.register(namespace, 'zh-Hant', entries))
       }
-      ctx.effect(() => ctx.locale.addLanguage({ id: 'zh-Hant', label: '繁體中文', fallback: 'zh' }))
-
       for (const [name, component] of [
         ['sidebar.brand.mark', BrandMark],
         ['sidebar.brand.name', BrandName],
@@ -41,6 +39,15 @@ window.__ModuleLoader__.load({
       ]) {
         ctx.slots.inject(name, () => ctx.slots.register({ name }, component))
       }
+
+      const [{ Converter }, { createTaiwanTranslator, localizeMetadata }] = await Promise.all([
+        import(new URL('junhao/opencc-cn2t.mjs', document.baseURI).href),
+        import(new URL('junhao/taiwan-text.mjs', document.baseURI).href),
+      ])
+      if (ctx.fiber.uid === null) return
+      const translate = createTaiwanTranslator(Converter)
+      ctx.effect(() => localizeMetadata(ctx.locale, translate))
+      ctx.effect(() => ctx.locale.addLanguage({ id: 'zh-Hant', label: '繁體中文', fallback: 'zh' }))
     }
 
     return { inject: ['locale', 'slots'], apply }

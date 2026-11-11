@@ -1,7 +1,8 @@
 import { globSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import * as OpenCC from 'opencc-js'
+import { Converter } from 'opencc-js/cn2t'
 import ts from 'typescript'
+import { createTaiwanTranslator } from '../plugin/taiwan-text.mjs'
 
 const upstream = process.argv[2]
 if (!upstream) {
@@ -69,41 +70,8 @@ function literal(node) {
   throw new Error(`無法讀取 ${node.getSourceFile().fileName} 的字典值 ${node.getText()}`)
 }
 
-const convert = OpenCC.Converter({ from: 'cn', to: 'twp' })
-const terms = new Map([
-  ['插件', '外掛'],
-  ['默認', '預設'],
-  ['輸入框', '輸入欄'],
-  ['點擊', '點選'],
-  ['配置', '設定'],
-  ['運行', '執行'],
-  ['全域性', '全域'],
-  ['智慧體', 'Agent'],
-  ['構建', '建置'],
-  ['生成', '產生'],
-  ['計劃', '計畫'],
-  ['反饋', '回饋'],
-  ['當前', '目前'],
-  ['新建', '新增'],
-  ['API Key', 'API 金鑰'],
-  ['自定義', '自訂'],
-  ['提供商', '供應商'],
-  ['檢測', '偵測'],
-  ['支持', '支援'],
-  ['只讀', '唯讀'],
-  ['賬戶', '帳戶'],
-  ['賬號', '帳號'],
-])
+const translate = createTaiwanTranslator(Converter)
 const overrides = JSON.parse(readFileSync(new URL('../plugin/locale-overrides.json', import.meta.url), 'utf8'))
-
-function translate(value) {
-  return value.split(/(\{\w+\}|\x60[^\x60]+\x60)/).map((part, index) => {
-    if (index % 2) return part
-    let translated = convert(part)
-    for (const [original, replacement] of terms) translated = translated.replaceAll(original, replacement)
-    return translated
-  }).join('')
-}
 
 const dictionaries = new Map()
 function collect(node) {
